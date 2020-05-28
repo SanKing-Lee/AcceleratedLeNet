@@ -1,0 +1,102 @@
+#ifndef _CONSTANTS_H_
+#define _CONSTANTS_H_
+
+#define FLOAT_MIN_SCALE -1.0f
+#define FLOAT_MAX_SCALE 1.0f
+
+#define IMG_NUM 1000
+
+// MNIST
+#define MNIST_SIZE 784
+#define MNIST_WH 28
+#define MNIST_PAD_SIZE 1024
+#define MNIST_PAD_WH 32
+
+// CONVOLVE_LAYER_1
+#define CONV_1_INPUT_WH 32
+#define CONV_1_INPUT_SIZE 1024
+#define CONV_1_CHANNEL_NUM 6
+#define CONV_1_FILTER_WH 5
+#define CONV_1_FILTER_SIZE 25
+#define CONV_1_STRIDE_HOR 1
+#define CONV_1_STRIDE_VER 1
+#define CONV_1_OUTPUT_WH 28
+#define CONV_1_OUTPUT_SIZE 784
+#define CONV_1_WEIGHT_SIZE (CONV_1_FILTER_SIZE*CONV_1_CHANNEL_NUM*sizeof(float))
+#define CONV_1_BIAS_SIZE (CONV_1_CHANNEL_NUM*sizeof(float))
+
+// POOLING_LAYER_2
+#define POOL_2_INPUT_WH 28
+#define POOL_2_INPUT_SIZE 784
+#define POOL_2_CHANNEL_NUM 6
+#define POOL_2_FILTER_WH 2
+#define POOL_2_FILTER_SIZE 4
+#define POOL_2_STRIDE_HOR 2
+#define POOL_2_STRIDE_VER 2
+#define POOL_2_OUTPUT_WH 14
+#define POOL_2_OUTPUT_SIZE 196
+#define POOL_2_WEIGHT_SIZE (POOL_2_FILTER_SIZE*POOL_2_CHANNEL_NUM*sizeof(float))
+#define POOL_2_BIAS_SIZE (POOL_2_CHANNEL_NUM*sizeof(float))
+
+// where to convole 
+static const int CONV_3_TABLE[] = {
+			1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1,
+			1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1,
+			1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1,
+			0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1,
+			0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1,
+			0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1
+		};
+
+// CONVOLVE_LAYER_3
+#define CONV_3_INPUT_WH 14
+#define CONV_3_INPUT_SIZE 196
+#define CONV_3_CHANNEL_NUM 16
+#define CONV_3_FILTER_WH 5
+#define CONV_3_FILTER_SIZE 25
+#define CONV_3_STRIDE_HOR 1
+#define CONV_3_STRIDE_VER 1
+#define CONV_3_OUTPUT_WH 10
+#define CONV_3_OUTPUT_SIZE 100
+#define CONV_3_WEIGHT_SIZE (CONV_3_FILTER_SIZE*CONV_3_CHANNEL_NUM*POOL_2_CHANNEL_NUM*sizeof(float))
+#define CONV_3_BIAS_SIZE (CONV_3_CHANNEL_NUM*sizeof(float))
+
+// POOLING_LAYER_4
+#define POOL_4_INPUT_WH 10
+#define POOL_4_INPUT_SIZE 100
+#define POOL_4_CHANNEL_NUM 16
+#define POOL_4_FILTER_WH 2
+#define POOL_4_FILTER_SIZE 4
+#define POOL_4_STRIDE_HOR 2
+#define POOL_4_STRIDE_VER 2
+#define POOL_4_OUTPUT_WH 5
+#define POOL_4_OUTPUT_SIZE 25
+#define POOL_4_WEIGHT_SIZE (POOL_4_FILTER_SIZE*POOL_4_CHANNEL_NUM*sizeof(float))
+#define POOL_4_BIAS_SIZE (POOL_4_CHANNEL_NUM*sizeof(float))
+
+// FULLY_CONNECTED_LAYER_5
+#define FC_5_INPUT_NEURON_NUM 400
+#define FC_5_WEIGHT_NUM 48000
+#define FC_5_BIAS_NUM 120
+#define FC_5_OUTPUT_NEURON_NUM 120
+#define FC_5_WEIGHT_SIZE (FC_5_INPUT_NEURON_NUM*FC_5_OUTPUT_NEURON_NUM*sizeof(float))
+#define FC_5_BIAS_SIZE (FC_5_OUTPUT_NEURON_NUM*sizeof(float))
+
+// FULLY_CONNECTED_LAYER_6
+#define FC_6_INPUT_NEURON_NUM 120
+#define FC_6_WEIGHT_NUM 10080
+#define FC_6_BIAS_NUM 84
+#define FC_6_OUTPUT_NEURON_NUM 84
+#define FC_6_WEIGHT_SIZE (FC_6_INPUT_NEURON_NUM*FC_6_OUTPUT_NEURON_NUM*sizeof(float))
+#define FC_6_BIAS_SIZE (FC_6_OUTPUT_NEURON_NUM*sizeof(float))
+
+// FULLY_CONNECTED_LAYER_7
+#define FC_7_INPUT_NEURON_NUM 84
+#define FC_7_WEIGHT_NUM 840
+#define FC_7_BIAS_NUM 10
+#define FC_7_OUTPUT_NEURON_NUM 10
+#define FC_7_WEIGHT_SIZE (FC_7_INPUT_NEURON_NUM*FC_7_OUTPUT_NEURON_NUM*sizeof(float))
+#define FC_7_BIAS_SIZE (FC_7_OUTPUT_NEURON_NUM*sizeof(float))
+
+
+#endif
